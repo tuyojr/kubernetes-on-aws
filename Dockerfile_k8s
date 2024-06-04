@@ -1,0 +1,7 @@
+FROM ubuntu:latest
+
+WORKDIR /app
+
+RUN apt update
+
+CMD ["sleep", "3600"]
