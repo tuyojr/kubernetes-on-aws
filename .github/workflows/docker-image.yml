@@ -51,13 +51,13 @@ jobs:
       - name: Get the latest tag
         id: get_latest_tag
         run: |
-          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1` 2>/dev/null || echo "v0.0.0")
+          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1` 2>/dev/null || echo "v1.0.0")
           echo "latest_tag=$latest_tag" >> $GITHUB_ENV
 
       - name: Calculate next tag
         id: calculate_next_tag
         run: |
-          latest_tag=${latest_tag:-"v0.0.0"}
+          latest_tag=${latest_tag:-"v1.0.0"}
           IFS='.' read -r -a parts <<< "${latest_tag#v}"
           major=${parts[0]}
           minor=${parts[1]}
