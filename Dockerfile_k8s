@@ -4,4 +4,4 @@ WORKDIR /app
 
 RUN apt update
 
-CMD ["sleep", "3600"]
+CMD ["echo", "Hello World!"]
