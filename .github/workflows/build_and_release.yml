@@ -73,4 +73,16 @@ jobs:
           release_name: "Release ${{ env.next_tag }}"
           body: "This includes another test."
           draft: false
-      
+  test_self_hosted_runner:
+    name: Test the self hosted runner on AWS
+    runs-on: [self-hosted, aws_k8s]
+    permissions:
+      packages: write
+      contents: read
+      id-token: write
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Run a test command
+        run: echo "This is from the self-hosted runner $HOSTNAME"
