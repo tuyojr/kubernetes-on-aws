@@ -73,16 +73,34 @@ jobs:
           release_name: "Release ${{ env.next_tag }}"
           body: "This includes another test."
           draft: false
-  test_self_hosted_runner:
-    name: Test the self hosted runner on AWS
-    runs-on: [self-hosted, aws_k8s]
-    permissions:
-      packages: write
-      contents: read
-      id-token: write
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v4
+  # test_self_hosted_runner:
+  #   name: Test the self hosted runner on AWS
+  #   runs-on: [self-hosted, aws_k8s]
+  #   permissions:
+  #     packages: write
+  #     contents: read
+  #     id-token: write
+  #   steps:
+  #     - name: Check out the repo
+  #       uses: actions/checkout@v4
 
-      - name: Run a test command
-        run: echo "This is from the self-hosted runner $HOSTNAME"
+  #     - name: Run a test command
+  #       run: echo "This is from the self-hosted runner $HOSTNAME"
+  testing_a_matrix_job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pet: [cat, dog]
+        color: [pink, brown]
+        include:
+          - color: white
+            pet: dog
+    steps:
+      - run: echo "Hello ${{ matrix.color }} ${{ matrix.pet }}"  
+      - name: Set a Value
+        id: step_two
+        run:  |
+          echo "action_state=yellow" >> "$GITHUB_ENV"
+      - name: Use the value from step two
+        id: step_three
+        run: echo $action_state
