@@ -1,4 +1,4 @@
-[![Publish a docker image](https://github.com/tuyojr/kubernetes-on-aws/actions/workflows/build_and_release.yml/badge.svg)](https://github.com/tuyojr/kubernetes-on-aws/actions/workflows/build_and_release.yml)
+[![Publish a docker image](https://github.com/tuyojr/kubernetes-on-aws/actions/workflows/build_and_release.yml/badge.svg)](https://github.com/tuyojr/kubernetes-on-aws/actions/workflows/build_and_release.yml?branch=main)
 # Overview
 
 This is a very simple, bare-bones NodeJS project created for you to use with Docker.
